@@ -25,8 +25,9 @@ public class SortingAlgorithms {
     public static void insertionSort(int[] inputArray){
         if(inputArray.length <= 1)
             return;
+        int n = inputArray.length;
 
-        for (int right = 1; right < inputArray.length; right++) {
+        for (int right = 1; right < n; right++) {
             int key = inputArray[right];
             int left = right - 1;
             while (left >= 0 && inputArray[left] > key) {
@@ -35,6 +36,7 @@ public class SortingAlgorithms {
             }
             inputArray[left+1] = key;
         }
+
     }
 
 /********************************************************************************************/
@@ -61,7 +63,7 @@ public class SortingAlgorithms {
 //        int[] leftHalf = mergeSortTopDown(Arrays.copyOfRange(inputArray, 0, pivot));
 //        int[] rightHalf = mergeSortTopDown(Arrays.copyOfRange(inputArray, pivot, arrLen));
 
-        // Custom copyArray() method
+        // Custom copyArray() method: creates a new array and copies items
         int[] leftHalf = mergeSortTopDown(copyArray(inputArray, 0, pivot));
         int[] rightHalf = mergeSortTopDown(copyArray(inputArray, pivot, arrLen));
 
@@ -101,29 +103,13 @@ public class SortingAlgorithms {
     }
 
     /**
-     * Creates a new copy of input array from start to end-1
-     * @param input
-     * @param start
-     * @param end
-     */
-    private static int[] copyArray(int[] input, int start, int end){
-        int[] result = new int[end-start];
-        int resPtr = 0;
-        for(; start < end; start++){
-            result[resPtr++] = input[start];
-        }
-
-        return result;
-    }
-
-    /**
      * Iterative (Bottom up) implementation of merge sort
      * In the bottom up approach, we divide the list into sublists of a single element
      * at the beginning. Each of the sublists is then sorted already. Then from this
      * point on, we merge the sublists two at a time until a single list remains.
      * @param inputArray
      */
-    public static void mergeSortBottomUp(int[] inputArray){
+    public static int[] mergeSortBottomUp(int[] inputArray){
         int n = inputArray.length;
         int[] workArray = new int[n];
 
@@ -137,8 +123,9 @@ public class SortingAlgorithms {
                 mergeHalvesBottomUp(inputArray, i, Math.min(i+width, n), Math.min(i+2*width, n), workArray);
             }
             // Copy to inputArray
-            inputArray = copyArray(workArray, 0 , n); // Note: copyArray() creates a new copy
+            copyArray(workArray, 0 , n, inputArray, 0); // Note: copyArray() creates a new copy
         }
+        return inputArray;
     }
 
     /**
@@ -166,8 +153,48 @@ public class SortingAlgorithms {
     }
 
 /********************************************************************************************/
-/*                                       MERGE SORT                                         */
+/*                                      UTILITY METHODS                                     */
 /********************************************************************************************/
+
+    /**
+     * Swap i'th and j'th item in input array
+     * @param input
+     * @param i
+     * @param j
+     */
+    private static void swap(int[] input, int i, int j){
+        int temp = input[i];
+        input[i] = input[j];
+        input[j] = temp;
+    }
+
+    /**
+     * Copies range [start, end) from input array to output starting at index idx
+     * @param input
+     * @param start
+     * @param end
+     * @param output
+     * @param idx
+     */
+    private static void copyArray(int[] input, int start, int end, int[] output, int idx){
+        for(; idx < output.length && start < end; idx++){
+            output[idx] = input[start++];
+        }
+    }
+    /**
+     * Creates a new copy of input array from start to end-1
+     * @param input
+     * @param start
+     * @param end
+     */
+    private static int[] copyArray(int[] input, int start, int end){
+        int[] result = new int[end-start];
+        int resPtr = 0;
+        for(; start < end; start++){
+            result[resPtr++] = input[start];
+        }
+        return result;
+    }
 
     /**
      * Print input array

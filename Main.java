@@ -1,15 +1,19 @@
 public class Main {
     public static void main(String[] args){
         int[] input = new int[]{8,3,5,1,4,2};
+        int n = input.length;
+        int[] result = new int[n];
 
-//        SortingAlgorithms.insertionSort(arr);
+//        System.out.println("Insertion Sort");
+//        SortingAlgorithms.insertionSort(input);
+//        printArray(input);
 
-        System.out.println("Top-Down Merge Sort");
-        int[] result = SortingAlgorithms.mergeSortTopDown(input);
-        printArray(result);
+//        System.out.println("Top-Down Merge Sort");
+//        result = SortingAlgorithms.mergeSortTopDown(input);
+//        printArray(result);
 
         System.out.println("Bottom-Up Merge Sort");
-        SortingAlgorithms.mergeSortBottomUp(input);
+        result = SortingAlgorithms.mergeSortBottomUp(input);
         printArray(result);
     }
 
@@ -22,5 +26,4 @@ public class Main {
                 System.out.print(", ");
         }
     }
-
 }
