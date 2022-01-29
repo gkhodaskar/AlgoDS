@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 /**
  * Implementations for different Sorting Algorithms (mainly for Arrays)
  * References:-
@@ -9,9 +7,9 @@ import java.util.Arrays;
  */
 public class SortingAlgorithms {
 
-/********************************************************************************************/
-/*                                   INSERTION SORT                                         */
-/********************************************************************************************/
+    /********************************************************************************************/
+    /**                                  INSERTION SORT                                        **/
+    /********************************************************************************************/
     /**
      * Space Complexity: O(1)
      * Time Complexity: O(n), O(n*n), O(n*n) for Best, Average, Worst cases respectively.
@@ -19,8 +17,11 @@ public class SortingAlgorithms {
      * Average Case: array is randomly sorted
      * Worst Case: array is reverse sorted.
      * Sorting In Place: Yes
-     * Stable: Yes
-     * @param inputArray
+     * Stable: Yes */
+
+    /**
+     * Insertion Sort implementation
+     * @param inputArray unsorted array input
      */
     public static void insertionSort(int[] inputArray){
         if(inputArray.length <= 1)
@@ -39,18 +40,22 @@ public class SortingAlgorithms {
 
     }
 
-/********************************************************************************************/
-/*                                       MERGE SORT                                         */
-/********************************************************************************************/
+    /********************************************************************************************/
+    /**                                      MERGE SORT                                        **/
+    /********************************************************************************************/
+
     /**
      * Space Complexity: O(n)
-     * Time Complexity: O(n*log(n)) -> Derived from recurrence relation: T(n) = 2 * T(n / 2) + O(n)
+     * Time Complexity: O(n*log(n)) -> Derived from recurrence : T(n) = 2 * T(n / 2) + O(n)
      * Sorting In Place: No in a typical implementation
      * Stable: Yes
      * Parallelizable: Yes (Several parallel variants are discussed in the third edition of Cormen,
-     * Leiserson, Rivest, and Stein's Introduction to Algorithms.)
-     * @param inputArray
-     * @return mergedArray
+     * Leiserson, Rivest, and Stein's Introduction to Algorithms.) */
+
+    /**
+     * Recursive (Top-Down) implementation of Merge Sort
+     * @param inputArray unsorted array input
+     * @return mergedArray obtained from MergeHalves()
      */
     public static int[] mergeSortTopDown(int [] inputArray){
         if(inputArray.length <= 1) {
@@ -67,10 +72,16 @@ public class SortingAlgorithms {
         int[] leftHalf = mergeSortTopDown(copyArray(inputArray, 0, pivot));
         int[] rightHalf = mergeSortTopDown(copyArray(inputArray, pivot, arrLen));
 
-        return mergeHalves(leftHalf, rightHalf);
+        return mergeHalvesTopDown(leftHalf, rightHalf);
     }
 
-    private static int[] mergeHalves(int[] leftHalf, int[] rightHalf) {
+    /**
+     * Merge given sorted arrays into a single array
+     * @param leftHalf array 1
+     * @param rightHalf array 2
+     * @return merged array formed by leftHalf and rightHalf
+     */
+    private static int[] mergeHalvesTopDown(int[] leftHalf, int[] rightHalf) {
         // Array to store merged result
         int[] mergedArray = new int[leftHalf.length + rightHalf.length];
 
@@ -103,11 +114,12 @@ public class SortingAlgorithms {
     }
 
     /**
-     * Iterative (Bottom up) implementation of merge sort
+     * Iterative (Bottom up) implementation of Merge Sort
      * In the bottom up approach, we divide the list into sublists of a single element
      * at the beginning. Each of the sublists is then sorted already. Then from this
      * point on, we merge the sublists two at a time until a single list remains.
-     * @param inputArray
+     * @param inputArray unsorted input array
+     * @return sorted input array
      */
     public static int[] mergeSortBottomUp(int[] inputArray){
         int n = inputArray.length;
@@ -130,11 +142,11 @@ public class SortingAlgorithms {
 
     /**
      * Merge halves for Bottom up implementation
-     * @param inputArray
+     * @param inputArray array input
      * @param left  Pointer to head of left sub-array
      * @param right Pointer to head of right sub-array
      * @param end   Pointer to end of inputArray
-     * @param workArray
+     * @param workArray temp array to help move items around
      */
     private static void mergeHalvesBottomUp(int[] inputArray, int left, int right, int end, int[] workArray) {
         int i = left, j = right;
@@ -152,40 +164,98 @@ public class SortingAlgorithms {
         }
     }
 
-/********************************************************************************************/
-/*                                      UTILITY METHODS                                     */
-/********************************************************************************************/
+    /********************************************************************************************/
+    /**                                      QUICK SORT                                        **/
+    /********************************************************************************************/
+
+    /**
+     * Space Complexity: O(n)
+     * Time Complexity: O(n*log(n)),O(n*log(n)), O(n^2) for Best, Average, Worst cases respectively.
+     * Sorting In Place: Yes
+     * Stable: No
+     */
+
+    /**
+     * Divide and Conquer implementation of Quick Sort
+     * @param input unsorted array
+     * @param low start of subarray
+     * @param high end of subarray
+     */
+    public static int[] quickSort(int input[], int low, int high) {
+        if (low < high)
+        {
+            int pivot = partition(input, low, high);
+
+            quickSort(input, low, pivot - 1);
+            quickSort(input, pivot + 1, high);
+        }
+        return input;
+    }
+
+    /**
+     * Partition given range of input array using a pivot at high
+     * @param input input array
+     * @param low start of subarray
+     * @param high end of subarray
+     * @return position of pivot value
+     */
+    private static int partition (int input[], int low, int high) {
+        int pivot = input[high];
+        int loPtr = low;
+
+        for (int hiPtr = low; hiPtr < high; hiPtr++)
+        {
+            // If item at hiPtr is smaller than pivot, move it to the left
+            if (input[hiPtr] <= pivot)
+            {
+                swapInArray(input, loPtr ,hiPtr);
+                loPtr++;
+            }
+        }
+        // Put pivot in loPtr position,
+        // values smaller than pivot are in positions low to i-1
+        // values higher than pivot are in positions i+1 to high
+        swapInArray(input, loPtr, high);
+        return (loPtr);
+    }
+
+
+    /********************************************************************************************/
+    /**                                     UTILITY METHODS                                    **/
+    /********************************************************************************************/
 
     /**
      * Swap i'th and j'th item in input array
-     * @param input
-     * @param i
-     * @param j
+     * @param input input array
+     * @param i swap position 1
+     * @param j swap position 2
      */
-    private static void swap(int[] input, int i, int j){
+    private static void swapInArray(int[] input, int i, int j){
         int temp = input[i];
         input[i] = input[j];
         input[j] = temp;
     }
 
     /**
-     * Copies range [start, end) from input array to output starting at index idx
-     * @param input
-     * @param start
-     * @param end
-     * @param output
-     * @param idx
+     * Copy range [start, end) from input array to output starting at index idx
+     * @param input input array
+     * @param start start of copy range
+     * @param end end of copy range
+     * @param output array to be copied to
+     * @param idx start index of output array, copy to and following this index up to idx+(end-start)
      */
     private static void copyArray(int[] input, int start, int end, int[] output, int idx){
         for(; idx < output.length && start < end; idx++){
             output[idx] = input[start++];
         }
     }
+
     /**
      * Creates a new copy of input array from start to end-1
-     * @param input
-     * @param start
-     * @param end
+     * @param input input array
+     * @param start start of copy range
+     * @param end end of copy range
+     * @return copy of input
      */
     private static int[] copyArray(int[] input, int start, int end){
         int[] result = new int[end-start];
@@ -197,8 +267,8 @@ public class SortingAlgorithms {
     }
 
     /**
-     * Print input array
-     * @param input
+     * Print array
+     * @param input input array
      */
     private static void printArray(int[] input){
         for(int i = 0; i < input.length; i++){

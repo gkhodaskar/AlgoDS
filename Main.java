@@ -1,3 +1,6 @@
+/**
+ * Driver class to test implementations of various algorithms and datastructures
+ */
 public class Main {
     public static void main(String[] args){
         int[] input = new int[]{8,3,5,1,4,2};
@@ -12,9 +15,14 @@ public class Main {
 //        result = SortingAlgorithms.mergeSortTopDown(input);
 //        printArray(result);
 
-        System.out.println("Bottom-Up Merge Sort");
-        result = SortingAlgorithms.mergeSortBottomUp(input);
+//        System.out.println("Bottom-Up Merge Sort");
+//        result = SortingAlgorithms.mergeSortBottomUp(input);
+//        printArray(result);
+
+        System.out.println("Quick Sort");
+        result = SortingAlgorithms.quickSort(input, 0, n-1);
         printArray(result);
+
     }
 
     private static void printArray(int[] arr){
