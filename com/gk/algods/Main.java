@@ -10,15 +10,15 @@ public class Main {
         int[] result = new int[n];
 
 //        System.out.println("Insertion Sort");
-//        SortingAlgorithms.insertionSort(input);
+//        com.gk.algods.SortingAlgorithms.insertionSort(input);
 //        printArray(input);
 
 //        System.out.println("Top-Down Merge Sort");
-//        result = SortingAlgorithms.mergeSortTopDown(input);
+//        result = com.gk.algods.SortingAlgorithms.mergeSortTopDown(input);
 //        printArray(result);
 
 //        System.out.println("Bottom-Up Merge Sort");
-//        result = SortingAlgorithms.mergeSortBottomUp(input);
+//        result = com.gk.algods.SortingAlgorithms.mergeSortBottomUp(input);
 //        printArray(result);
 
         System.out.println("Quick Sort");
