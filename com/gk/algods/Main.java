@@ -5,24 +5,30 @@ package com.gk.algods;
  */
 public class Main {
     public static void main(String[] args){
-        int[] input = new int[]{8,3,5,1,4,2};
+        int[] input = new int[]{8,3,5,1,4,2,5,2,7,2,9,4,3,7,1};
         int n = input.length;
         int[] result = new int[n];
 
-//        System.out.println("Insertion Sort");
+        System.out.print("Input Array:          ");
+        printArray(input);
+
+//        System.out.print("Insertion Sort:       ");
 //        com.gk.algods.SortingAlgorithms.insertionSort(input);
 //        printArray(input);
 
-//        System.out.println("Top-Down Merge Sort");
+//        System.out.print("Top-Down Merge Sort:  ");
 //        result = com.gk.algods.SortingAlgorithms.mergeSortTopDown(input);
 //        printArray(result);
 
-//        System.out.println("Bottom-Up Merge Sort");
+//        System.out.print("Bottom-Up Merge Sort: ");
 //        result = com.gk.algods.SortingAlgorithms.mergeSortBottomUp(input);
 //        printArray(result);
 
-        System.out.println("Quick Sort");
-        result = SortingAlgorithms.quickSort(input, 0, n-1);
+//        System.out.print("Quick Sort:           ");
+//        SortingAlgorithms.quickSort(input, 0, n-1);
+
+        System.out.print("Counting Sort:        ");
+        result = SortingAlgorithms.countingSort(input, 0, 9);
         printArray(result);
 
     }
@@ -31,7 +37,7 @@ public class Main {
         for(int i = 0; i < arr.length; i++){
             System.out.print(arr[i]);
             if(i == arr.length-1)
-                System.out.println();
+                System.out.print("\n\n");
             else
                 System.out.print(", ");
         }

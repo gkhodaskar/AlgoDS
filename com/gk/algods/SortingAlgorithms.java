@@ -183,7 +183,7 @@ public class SortingAlgorithms {
      * @param low start of subarray
      * @param high end of subarray
      */
-    public static int[] quickSort(int input[], int low, int high) {
+    public static void quickSort(int input[], int low, int high) {
         if (low < high)
         {
             int pivot = partition(input, low, high);
@@ -191,7 +191,7 @@ public class SortingAlgorithms {
             quickSort(input, low, pivot - 1);
             quickSort(input, pivot + 1, high);
         }
-        return input;
+//        return input;
     }
 
     /**
@@ -219,6 +219,49 @@ public class SortingAlgorithms {
         // values higher than pivot are in positions i+1 to high
         swapInArray(input, loPtr, high);
         return (loPtr);
+    }
+
+    /********************************************************************************************/
+    /**                                    COUNTING SORT                                       **/
+    /********************************************************************************************/
+
+    /**
+     * Space complexity: O(K)
+     * Best case performance: O(n+K)
+     * Average case performance: O(n+K)
+     * Worst case performance: O(n+K)
+     * Stable: Yes (K is the number of distinct elements in the array)
+     */
+
+    /**
+     * Counting Sort is a sorting technique based on keys between a specific range. It works by
+     * counting the number of objects having distinct key values (kind of hashing). Then doing
+     * some arithmetic to calculate the position of each object in the output sequence.
+     * @param inputArray unsorted input
+     * @return sorted output (new array)
+     */
+    public static int[] countingSort(int[] inputArray, int lo, int hi){
+        int n = inputArray.length;
+        int[] result = new int[n];
+        int span = hi-lo+1;
+        int[] counts = new int[span];
+
+        for(int val : inputArray){
+            counts[val-lo]++;
+        }
+
+        for(int ptr = 1; ptr < span; ptr++){
+            counts[ptr] += counts[ptr-1];
+        }
+
+        for(int ptr2 = 0; ptr2 < n; ptr2++){
+            int currVal = inputArray[ptr2];
+            int idx = counts[currVal-lo];
+            counts[currVal-lo]--;
+            result[idx-1] = currVal;
+        }
+
+        return result;
     }
 
 
