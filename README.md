@@ -12,3 +12,5 @@ Implementation with detailed description of important algorithms and datastructu
 1. [Min Heap](https://github.com/gkhodaskar/AlgoDS/blob/main/com/gk/algods/MinHeap.java)
 2. [Max Heap](https://github.com/gkhodaskar/AlgoDS/blob/main/com/gk/algods/MaxHeap.java)
 
+## Miscellaneous
+1. [List Iterator](https://github.com/gkhodaskar/AlgoDS/blob/main/com/gk/algods/MyListIterator.java)
