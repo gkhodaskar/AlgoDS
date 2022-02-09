@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9b154e7e-f68e-40c5-bbcf-bfdef8e0786e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/out/production/AlgoDS/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AlgoDS/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AlgoDS/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AlgoDS/SortingAlgorithms.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/com/gk/algods/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/com/gk/algods/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AlgoDS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AlgoDS/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AlgoDS/com/gk/algods/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AlgoDS/com/gk/algods/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AlgoDS/com/gk/algods/SortingAlgorithms.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AlgoDS/com/gk/algods/SortingAlgorithms.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,9 +52,17 @@
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/out" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.gk.algods" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
+      <option name="MAIN_CLASS_NAME" value="com.gk.algods.Main" />
       <module name="AlgoDS" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -81,5 +90,20 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/out/production/AlgoDS/com/gk/algods/Main.class</url>
+          <line>11</line>
+          <properties class="com.gk.algods.Main" method="printArray">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
